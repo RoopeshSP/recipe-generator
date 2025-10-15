@@ -1,0 +1,132 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  name      String?
+  password  String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Relations
+  recipes   Recipe[]
+  favorites Favorite[]
+  reviews   Review[]
+
+  @@map("users")
+}
+
+model Recipe {
+  id          String   @id @default(cuid())
+  title       String
+  description String?
+  imageUrl    String?
+  prepTime    Int      // in minutes
+  cookTime    Int      // in minutes
+  servings    Int
+  difficulty  Difficulty @default(EASY)
+  category    Category
+  cuisine     String?
+  tags        String[] // Array of tags
+  
+  // Nutrition info
+  calories    Int?
+  protein     Float?
+  carbs       Float?
+  fat         Float?
+  
+  // Recipe content
+  ingredients Ingredient[]
+  instructions Instruction[]
+  
+  // Metadata
+  authorId    String
+  author      User     @relation(fields: [authorId], references: [id], onDelete: Cascade)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  
+  // Relations
+  favorites   Favorite[]
+  reviews     Review[]
+
+  @@map("recipes")
+}
+
+model Ingredient {
+  id          String  @id @default(cuid())
+  name        String
+  amount      String
+  unit        String?
+  notes       String?
+  recipeId    String
+  recipe      Recipe  @relation(fields: [recipeId], references: [id], onDelete: Cascade)
+
+  @@map("ingredients")
+}
+
+model Instruction {
+  id          String  @id @default(cuid())
+  stepNumber  Int
+  description String
+  imageUrl    String?
+  recipeId    String
+  recipe      Recipe  @relation(fields: [recipeId], references: [id], onDelete: Cascade)
+
+  @@map("instructions")
+}
+
+model Favorite {
+  id       String @id @default(cuid())
+  userId   String
+  recipeId String
+  user     User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  recipe   Recipe @relation(fields: [recipeId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, recipeId])
+  @@map("favorites")
+}
+
+model Review {
+  id        String   @id @default(cuid())
+  rating    Int      // 1-5 stars
+  comment   String?
+  userId    String
+  recipeId  String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  recipe    Recipe   @relation(fields: [recipeId], references: [id], onDelete: Cascade)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([userId, recipeId])
+  @@map("reviews")
+}
+
+enum Difficulty {
+  EASY
+  MEDIUM
+  HARD
+}
+
+enum Category {
+  BREAKFAST
+  LUNCH
+  DINNER
+  DESSERT
+  SNACK
+  BEVERAGE
+  APPETIZER
+  SOUP
+  SALAD
+  MAIN_COURSE
+  SIDE_DISH
+}
