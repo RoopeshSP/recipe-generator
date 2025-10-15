@@ -209,20 +209,7 @@ NEXTAUTH_SECRET="your-secure-secret"
 - Run `npm run db:generate` before building
 - Ensure all environment variables are set
 - Check TypeScript errors with `npm run lint`
-
-## 📝 License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
-
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Add tests if applicable
-5. Submit a pull request
-
-## 📞 Support
+- 
 
 For support, please open an issue in the GitHub repository or contact the development team.
 
