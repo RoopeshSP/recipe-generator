@@ -16,7 +16,8 @@
     "db:reset": "prisma migrate reset --force && npm run db:seed",
     "deploy:prepare": "node scripts/deploy.js",
     "deploy:vercel": "vercel --prod",
-    "deploy:build": "npm run db:generate && npm run build"
+    "deploy:build": "npm run db:generate && npm run build",
+    "postinstall": "prisma generate"
   },
   "dependencies": {
     "@heroicons/react": "^2.0.18",
