@@ -9,7 +9,7 @@ export interface Recipe {
   difficulty: string
   category: string
   cuisine?: string
-  tags: string
+  tags: string | string[]
   calories?: number
   protein?: number
   carbs?: number
@@ -57,7 +57,7 @@ export interface CreateRecipeInput {
   difficulty: string
   category: string
   cuisine?: string
-  tags: string
+  tags: string | string[]
   calories?: number
   protein?: number
   carbs?: number

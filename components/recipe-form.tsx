@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import { useForm, useFieldArray } from 'react-hook-form'
 import { CreateRecipeInput } from '@/types/recipe'
-import type { Category, Difficulty } from '@prisma/client'
+// Removed Prisma enum imports - using string types instead
 import { PlusIcon, TrashIcon } from '@heroicons/react/24/outline'
 
 interface RecipeFormProps {
@@ -57,13 +57,15 @@ export function RecipeForm({ onSubmit, isSubmitting = false, initialData }: Reci
       const newTag = tagsInput.trim()
       setTagsInput('')
       const currentTags = watch('tags') || []
-      setValue('tags', [...currentTags, newTag], { shouldDirty: true })
+      const tagsArray = Array.isArray(currentTags) ? currentTags : []
+      setValue('tags', [...tagsArray, newTag], { shouldDirty: true })
     }
   }
 
   const removeTag = (indexToRemove: number) => {
     const currentTags = watch('tags') || []
-    setValue('tags', currentTags.filter((_, index) => index !== indexToRemove), { shouldDirty: true })
+    const tagsArray = Array.isArray(currentTags) ? currentTags : []
+    setValue('tags', tagsArray.filter((_, index) => index !== indexToRemove), { shouldDirty: true })
   }
 
   return (
@@ -210,7 +212,10 @@ export function RecipeForm({ onSubmit, isSubmitting = false, initialData }: Reci
             </button>
           </div>
           <div className="flex flex-wrap gap-2">
-            {(watch('tags') || []).map((tag, index) => (
+            {(() => {
+              const tags = watch('tags')
+              return Array.isArray(tags) ? tags : []
+            })().map((tag, index) => (
               <span
                 key={index}
                 className="bg-primary-100 text-primary-700 px-3 py-1 rounded-full text-sm flex items-center gap-2"

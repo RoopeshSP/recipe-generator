@@ -92,7 +92,7 @@ export default function HomePage() {
               dietaryRestrictions: filters.dietaryRestrictions,
               favoriteCuisines: filters.cuisine,
               preferredDifficulty: filters.difficulty,
-              ratingThreshold: filters.rating
+              ratingThreshold: filters.rating ?? undefined
             }}
           />
         ) : (
@@ -100,7 +100,6 @@ export default function HomePage() {
             <RecipeGrid 
               search={search} 
               category={category}
-              filters={filters}
             />
           </Suspense>
         )}

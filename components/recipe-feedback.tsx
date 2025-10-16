@@ -140,7 +140,7 @@ export function RecipeFeedback({
       try {
         await navigator.share(shareData)
       } catch (error) {
-        if (error.name !== 'AbortError') {
+        if (error instanceof Error && error.name !== 'AbortError') {
           console.error('Error sharing:', error)
           fallbackShare()
         }

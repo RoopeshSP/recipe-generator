@@ -80,18 +80,10 @@ export function RecipeSuggestions({
             protein: 16,
             carbs: 55,
             fat: 14,
-            imageUrl: null,
+            imageUrl: undefined,
             createdAt: new Date(),
             updatedAt: new Date(),
             authorId: "1",
-            author: {
-              id: "1",
-              name: "Chef Maria",
-              email: "maria@example.com",
-              createdAt: new Date(),
-              updatedAt: new Date(),
-              password: ""
-            },
             ingredients: [],
             instructions: []
           },
@@ -110,18 +102,10 @@ export function RecipeSuggestions({
             protein: 25,
             carbs: 8,
             fat: 16,
-            imageUrl: null,
+            imageUrl: undefined,
             createdAt: new Date(),
             updatedAt: new Date(),
             authorId: "1",
-            author: {
-              id: "1",
-              name: "Chef Maria",
-              email: "maria@example.com",
-              createdAt: new Date(),
-              updatedAt: new Date(),
-              password: ""
-            },
             ingredients: [],
             instructions: []
           }
@@ -147,18 +131,10 @@ export function RecipeSuggestions({
             protein: 14,
             carbs: 45,
             fat: 12,
-            imageUrl: null,
+            imageUrl: undefined,
             createdAt: new Date(),
             updatedAt: new Date(),
             authorId: "1",
-            author: {
-              id: "1",
-              name: "Chef Maria",
-              email: "maria@example.com",
-              createdAt: new Date(),
-              updatedAt: new Date(),
-              password: ""
-            },
             ingredients: [],
             instructions: []
           }
@@ -184,18 +160,10 @@ export function RecipeSuggestions({
             protein: 12,
             carbs: 45,
             fat: 18,
-            imageUrl: null,
+            imageUrl: undefined,
             createdAt: new Date(),
             updatedAt: new Date(),
             authorId: "1",
-            author: {
-              id: "1",
-              name: "Chef Maria",
-              email: "maria@example.com",
-              createdAt: new Date(),
-              updatedAt: new Date(),
-              password: ""
-            },
             ingredients: [],
             instructions: []
           }

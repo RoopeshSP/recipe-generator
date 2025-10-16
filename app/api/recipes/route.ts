@@ -79,6 +79,7 @@ export async function POST(request: NextRequest) {
     const recipe = await prisma.recipe.create({
       data: {
         ...body,
+        tags: Array.isArray(body.tags) ? body.tags.join(', ') : body.tags,
         authorId: demoUser.id,
         ingredients: {
           create: body.ingredients,

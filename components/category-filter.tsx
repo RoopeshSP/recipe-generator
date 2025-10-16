@@ -1,7 +1,6 @@
 'use client'
 
 import { useState } from 'react'
-import { Category } from '@prisma/client'
 
 const categories = [
   { value: 'ALL', label: 'All Categories' },
