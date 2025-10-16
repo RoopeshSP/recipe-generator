@@ -6,17 +6,16 @@ const openai = new OpenAI({
 })
 
 export async function POST(request: NextRequest) {
-  try {
-    const { prompt, dietaryRestrictions, cuisine, difficulty, servings } = await request.json()
+  const { prompt, dietaryRestrictions, cuisine, difficulty, servings } = await request.json()
 
-    if (!prompt) {
-      return NextResponse.json(
-        { error: 'Prompt is required' },
-        { status: 400 }
-      )
-    }
+  if (!prompt) {
+    return NextResponse.json(
+      { error: 'Prompt is required' },
+      { status: 400 }
+    )
+  }
 
-    const systemPrompt = `You are a professional chef and recipe developer. Create a detailed recipe based on the user's request. 
+  const systemPrompt = `You are a professional chef and recipe developer. Create a detailed recipe based on the user's request. 
     
     Format your response as a JSON object with the following structure:
     {
@@ -57,6 +56,7 @@ export async function POST(request: NextRequest) {
 
     Make sure the recipe is practical, well-seasoned, and includes proper cooking techniques.`
 
+  try {
     const completion = await openai.chat.completions.create({
       // Use a widely-available lightweight model for free-tier compatibility
       model: "gpt-4o-mini",
@@ -112,7 +112,6 @@ export async function POST(request: NextRequest) {
     // Attempt secondary provider via OpenRouter if available
     if (isQuotaOrMissingKey && process.env.OPENROUTER_API_KEY) {
       try {
-        const { prompt, dietaryRestrictions, cuisine, difficulty, servings } = await request.json()
         const res = await fetch('https://openrouter.ai/api/v1/chat/completions', {
           method: 'POST',
           headers: {
