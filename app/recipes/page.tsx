@@ -1,9 +1,9 @@
 "use client"
 
 import { Suspense, useState } from 'react'
-import { SearchBar } from '@/components/search-bar'
-import { CategoryFilter } from '@/components/category-filter'
-import { RecipeGrid } from '@/components/recipe-grid'
+import { SearchBar } from '../../components/search-bar'
+import { CategoryFilter } from '../../components/category-filter'
+import { RecipeGrid } from '../../components/recipe-grid'
 
 export default function RecipesPage() {
   const [search, setSearch] = useState<string>('')

@@ -1,6 +1,6 @@
 import { notFound } from 'next/navigation'
-import { RecipeDetail } from '@/components/recipe-detail'
-import { getRecipe } from '@/lib/api'
+import { RecipeDetail } from '../../../components/recipe-detail'
+import { getRecipe } from '../../../lib/api'
 
 interface RecipePageProps {
   params: {

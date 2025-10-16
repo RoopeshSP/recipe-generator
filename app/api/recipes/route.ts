@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { PrismaClient } from '@prisma/client'
-import { CreateRecipeInput } from '@/types/recipe'
+import { CreateRecipeInput } from '../../../types/recipe'
 
 const prisma = new PrismaClient()
 

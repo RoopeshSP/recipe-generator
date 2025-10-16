@@ -2,7 +2,7 @@
 
 import { useQuery } from '@tanstack/react-query'
 import { RecipeCard } from './recipe-card'
-import { getRecipes } from '@/lib/api'
+import { getRecipes } from '../lib/api'
 
 interface RecipeGridProps {
   search?: string

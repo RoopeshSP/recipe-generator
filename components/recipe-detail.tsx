@@ -2,7 +2,7 @@
 
 import Image from 'next/image'
 import { ClockIcon, UserGroupIcon, FireIcon } from '@heroicons/react/24/outline'
-import { Recipe } from '@/types/recipe'
+import { Recipe } from '../types/recipe'
 import { RecipeFeedback } from './recipe-feedback'
 
 interface RecipeDetailProps {

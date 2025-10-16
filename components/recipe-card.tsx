@@ -5,7 +5,7 @@ import Link from 'next/link'
 import { HeartIcon, ClockIcon, UserGroupIcon } from '@heroicons/react/24/outline'
 import { HeartIcon as HeartSolidIcon } from '@heroicons/react/24/solid'
 import { useState } from 'react'
-import { Recipe } from '@/types/recipe'
+import { Recipe } from '../types/recipe'
 import toast from 'react-hot-toast'
 
 interface RecipeCardProps {

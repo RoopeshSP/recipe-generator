@@ -1,12 +1,12 @@
 "use client"
 
 import { Suspense, useState } from 'react'
-import { RecipeGrid } from '@/components/recipe-grid'
-import { Hero } from '@/components/hero'
-import { SearchBar } from '@/components/search-bar'
-import { CategoryFilter } from '@/components/category-filter'
-import { AdvancedFilters } from '@/components/advanced-filters'
-import { RecipeSuggestions } from '@/components/recipe-suggestions'
+import { RecipeGrid } from '../components/recipe-grid'
+import { Hero } from '../components/hero'
+import { SearchBar } from '../components/search-bar'
+import { CategoryFilter } from '../components/category-filter'
+import { AdvancedFilters } from '../components/advanced-filters'
+import { RecipeSuggestions } from '../components/recipe-suggestions'
 
 interface FilterOptions {
   difficulty: string[]

@@ -1,4 +1,4 @@
-import { Recipe } from '@/types/recipe'
+import { Recipe } from '../types/recipe'
 
 function getApiBase() {
   // In browser use relative URLs; on server, prefer configured base

@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import { SparklesIcon, ClockIcon, UsersIcon, StarIcon, FireIcon } from '@heroicons/react/24/outline'
-import { generateRecipe } from '@/lib/api'
+import { generateRecipe } from '../lib/api'
 import toast from 'react-hot-toast'
 import { useRouter } from 'next/navigation'
 import { IngredientInput } from './ingredient-input'

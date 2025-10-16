@@ -2,8 +2,8 @@
 
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
-import { RecipeForm } from '@/components/recipe-form'
-import { CreateRecipeInput } from '@/types/recipe'
+import { RecipeForm } from '../../components/recipe-form'
+import { CreateRecipeInput } from '../../types/recipe'
 import toast from 'react-hot-toast'
 
 export default function CreateRecipePage() {
