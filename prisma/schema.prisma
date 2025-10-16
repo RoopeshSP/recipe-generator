@@ -6,8 +6,8 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
+  provider = "sqlite"
+  url      = "file:./dev.db"
 }
 
 model User {
@@ -34,10 +34,10 @@ model Recipe {
   prepTime    Int      // in minutes
   cookTime    Int      // in minutes
   servings    Int
-  difficulty  Difficulty @default(EASY)
-  category    Category
+  difficulty  String @default("EASY")
+  category    String
   cuisine     String?
-  tags        String[] // Array of tags
+  tags        String   // Comma-separated tags
   
   // Nutrition info
   calories    Int?
@@ -111,22 +111,6 @@ model Review {
   @@map("reviews")
 }
 
-enum Difficulty {
-  EASY
-  MEDIUM
-  HARD
-}
-
-enum Category {
-  BREAKFAST
-  LUNCH
-  DINNER
-  DESSERT
-  SNACK
-  BEVERAGE
-  APPETIZER
-  SOUP
-  SALAD
-  MAIN_COURSE
-  SIDE_DISH
-}
+// Enums converted to strings for SQLite compatibility
+// Difficulty: "EASY", "MEDIUM", "HARD"
+// Category: "BREAKFAST", "LUNCH", "DINNER", "DESSERT", "SNACK", "BEVERAGE", "APPETIZER", "SOUP", "SALAD", "MAIN_COURSE", "SIDE_DISH"

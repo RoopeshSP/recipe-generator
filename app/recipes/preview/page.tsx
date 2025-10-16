@@ -173,12 +173,12 @@ export default function RecipePreviewPage() {
               {/* Tags */}
               {recipe.tags && recipe.tags.length > 0 && (
                 <div className="flex flex-wrap gap-2 mb-6">
-                  {recipe.tags.map((tag, index) => (
+                  {(Array.isArray(recipe.tags) ? recipe.tags : recipe.tags.split(', ')).map((tag, index) => (
                     <span
                       key={index}
                       className="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm"
                     >
-                      {tag}
+                      {tag.trim()}
                     </span>
                   ))}
                 </div>

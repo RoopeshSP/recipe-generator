@@ -76,14 +76,19 @@ export function RecipeCard({ recipe }: RecipeCardProps) {
             </div>
           </div>
 
-          {recipe.tags.length > 0 && (
+          {recipe.tags && (
             <div className="flex flex-wrap gap-1">
-              {recipe.tags.slice(0, 3).map((tag) => (
+              {(typeof recipe.tags === 'string' 
+                ? recipe.tags.split(', ').slice(0, 3)
+                : Array.isArray(recipe.tags) 
+                  ? recipe.tags.slice(0, 3)
+                  : []
+              ).map((tag) => (
                 <span
                   key={tag}
                   className="bg-gray-100 text-gray-600 px-2 py-1 rounded-full text-xs"
                 >
-                  {tag}
+                  {tag.trim()}
                 </span>
               ))}
             </div>

@@ -1,5 +1,3 @@
-import { Category, Difficulty } from '@prisma/client'
-
 export interface Recipe {
   id: string
   title: string
@@ -8,10 +6,10 @@ export interface Recipe {
   prepTime: number
   cookTime: number
   servings: number
-  difficulty: Difficulty
-  category: Category
+  difficulty: string
+  category: string
   cuisine?: string
-  tags: string[]
+  tags: string
   calories?: number
   protein?: number
   carbs?: number
@@ -56,10 +54,10 @@ export interface CreateRecipeInput {
   prepTime: number
   cookTime: number
   servings: number
-  difficulty: Difficulty
-  category: Category
+  difficulty: string
+  category: string
   cuisine?: string
-  tags: string[]
+  tags: string
   calories?: number
   protein?: number
   carbs?: number

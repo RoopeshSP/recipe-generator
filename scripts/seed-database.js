@@ -38,7 +38,7 @@ async function seedDatabase() {
           difficulty: recipeData.difficulty,
           category: recipeData.category,
           cuisine: recipeData.cuisine,
-          tags: recipeData.tags,
+          tags: Array.isArray(recipeData.tags) ? recipeData.tags.join(', ') : recipeData.tags,
           calories: recipeData.calories,
           protein: recipeData.protein,
           carbs: recipeData.carbs,

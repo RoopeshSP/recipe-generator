@@ -68,14 +68,19 @@ export function RecipeDetail({ recipe }: RecipeDetailProps) {
               </div>
 
               {/* Tags */}
-              {recipe.tags.length > 0 && (
+              {recipe.tags && (
                 <div className="flex flex-wrap gap-2">
-                  {recipe.tags.map((tag) => (
+                  {(typeof recipe.tags === 'string' 
+                    ? recipe.tags.split(', ')
+                    : Array.isArray(recipe.tags) 
+                      ? recipe.tags
+                      : []
+                  ).map((tag) => (
                     <span
                       key={tag}
                       className="bg-gray-100 text-gray-600 px-3 py-1 rounded-full text-sm"
                     >
-                      {tag}
+                      {tag.trim()}
                     </span>
                   ))}
                 </div>

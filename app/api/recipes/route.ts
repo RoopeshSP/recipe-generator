@@ -22,7 +22,7 @@ export async function GET(request: NextRequest) {
       where.OR = [
         { title: { contains: search, mode: 'insensitive' } },
         { description: { contains: search, mode: 'insensitive' } },
-        { tags: { has: search } },
+        { tags: { contains: search, mode: 'insensitive' } },
       ]
     }
 
