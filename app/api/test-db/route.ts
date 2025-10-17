@@ -21,7 +21,7 @@ export async function GET(request: NextRequest) {
     console.error('Database test error:', error)
     return NextResponse.json({ 
       success: false, 
-      error: error.message,
+      error: error instanceof Error ? error.message : 'Unknown error',
       databaseUrl: process.env.DATABASE_URL ? 'Set' : 'Not set'
     }, { status: 500 })
   } finally {
